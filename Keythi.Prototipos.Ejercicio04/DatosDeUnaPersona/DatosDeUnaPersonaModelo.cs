@@ -1,31 +1,61 @@
-﻿using System;
+﻿using Keythi.Prototipos.Ejercicio04.Almacen;
+using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Keythi.Prototipos.Ejercicio04.DatosDeUnaPersona
 {
     internal class DatosDeUnaPersonaModelo
     {
-        public List<Persona> Personas { get; private set; } = new List<Persona>
+        public List<Persona> Personas { get; private set; } = new List<Persona>();
+
+        public DatosDeUnaPersonaModelo()
         {
-            new Persona { Documento = 1234562, Nombre = "Juan", Apellido = "Pérez", TipoNumero = TiposNumero.CASA, CodigoPais = 54, CodigoArea = 11, NumeroTel = 5555123 },
-            new Persona { Documento = 8765432, Nombre = "María", Apellido = "García", TipoNumero = TiposNumero.TRABAJO, CodigoPais = 1, CodigoArea = 212, NumeroTel = 134567 },
-            new Persona { Documento = 2345672, Nombre = "Pedro", Apellido = "López", TipoNumero = TiposNumero.OTRO, CodigoPais = 34, CodigoArea = 91, NumeroTel = 98764321 },
-            new Persona { Documento = 3456782, Nombre = "Ana", Apellido = "Torres", TipoNumero = TiposNumero.CASA, CodigoPais = 44, CodigoArea = 20, NumeroTel = 765421 },
-            new Persona { Documento = 4567890, Nombre = "Carlos", Apellido = "Fernández", TipoNumero = TiposNumero.CASA, CodigoPais = 49, CodigoArea = 30, NumeroTel = 310987 },
-            new Persona { Documento = 5678901, Nombre = "Laura", Apellido = "Ramírez", TipoNumero = TiposNumero.CASA, CodigoPais = 33, CodigoArea = 1, NumeroTel = 9988766 },
-            new Persona { Documento = 6789012, Nombre = "José", Apellido = "Martínez", TipoNumero = TiposNumero.CASA, CodigoPais = 61, CodigoArea = 3, NumeroTel = 123214 },
-            new Persona { Documento = 7890124, Nombre = "Sofía", Apellido = "González", TipoNumero = TiposNumero.TRABAJO, CodigoPais = 54, CodigoArea = 223, NumeroTel = 444678 },
-            new Persona { Documento = 8901245, Nombre = "Luis", Apellido = "Sánchez", TipoNumero = TiposNumero.OTRO, CodigoPais = 52, CodigoArea = 55, NumeroTel = 9876542 },
-            new Persona { Documento = 9012456, Nombre = "Gabriela", Apellido = "Méndez", TipoNumero = TiposNumero.TRABAJO, CodigoPais = 57, CodigoArea = 1, NumeroTel = 765432 },
-            new Persona { Documento = 1123344, Nombre = "Martín", Apellido = "Suárez", TipoNumero = TiposNumero.TRABAJO, CodigoPais = 1, CodigoArea = 305, NumeroTel = 321098 },
-            new Persona { Documento = 2234455, Nombre = "Verónica", Apellido = "Castro", TipoNumero = TiposNumero.OTRO, CodigoPais = 55, CodigoArea = 11, NumeroTel = 654321 },
-            new Persona { Documento = 3445566, Nombre = "Nicolás", Apellido = "Ibáñez", TipoNumero = TiposNumero.CASA, CodigoPais = 34, CodigoArea = 93, NumeroTel = 23456789 },
-            new Persona { Documento = 4556677, Nombre = "Paula", Apellido = "Delgado", TipoNumero = TiposNumero.CASA, CodigoPais = 49, CodigoArea = 69, NumeroTel = 87654 },
-            new Persona { Documento = 5667788, Nombre = "Diego", Apellido = "Vázquez", TipoNumero = TiposNumero.OTRO, CodigoPais = 54, CodigoArea = 351, NumeroTel = 554321 }
-        };
+            // Llamamos al método para llenar la lista de Personas
+            CargarPersonas();
+        }
+
+        private void CargarPersonas()
+        {
+            // Recorremos las personas en PersonaAlmacen y las agregamos a la lista Personas
+            foreach (var personaEntidad in PersonaAlmacen.ObtenerPersonas())
+            {
+                var personaModelo = new Persona
+                {
+                    Documento = personaEntidad.Documento,
+                    Nombre = personaEntidad.Nombre,
+                    Apellido = personaEntidad.Apellido,
+                    TipoNumero = (TiposNumero)personaEntidad.TipoNumero,
+                    CodigoPais = personaEntidad.CodigoPais,
+                    CodigoArea = personaEntidad.CodigoArea,
+                    NumeroTel = personaEntidad.NumeroTel
+                };
+
+                // Agregar la persona a la lista
+                Personas.Add(personaModelo);
+            }
+        }
+        /* new Persona { Documento = 1234562, Nombre = "Juan", Apellido = "Pérez", TipoNumero = TiposNumero.CASA, CodigoPais = 54, CodigoArea = 11, NumeroTel = 5555123 },
+        new Persona { Documento = 8765432, Nombre = "María", Apellido = "García", TipoNumero = TiposNumero.TRABAJO, CodigoPais = 1, CodigoArea = 212, NumeroTel = 134567 },
+        new Persona { Documento = 2345672, Nombre = "Pedro", Apellido = "López", TipoNumero = TiposNumero.OTRO, CodigoPais = 34, CodigoArea = 91, NumeroTel = 98764321 },
+        new Persona { Documento = 3456782, Nombre = "Ana", Apellido = "Torres", TipoNumero = TiposNumero.CASA, CodigoPais = 44, CodigoArea = 20, NumeroTel = 765421 },
+        new Persona { Documento = 4567890, Nombre = "Carlos", Apellido = "Fernández", TipoNumero = TiposNumero.CASA, CodigoPais = 49, CodigoArea = 30, NumeroTel = 310987 },
+        new Persona { Documento = 5678901, Nombre = "Laura", Apellido = "Ramírez", TipoNumero = TiposNumero.CASA, CodigoPais = 33, CodigoArea = 1, NumeroTel = 9988766 },
+        new Persona { Documento = 6789012, Nombre = "José", Apellido = "Martínez", TipoNumero = TiposNumero.CASA, CodigoPais = 61, CodigoArea = 3, NumeroTel = 123214 },
+        new Persona { Documento = 7890124, Nombre = "Sofía", Apellido = "González", TipoNumero = TiposNumero.TRABAJO, CodigoPais = 54, CodigoArea = 223, NumeroTel = 444678 },
+        new Persona { Documento = 8901245, Nombre = "Luis", Apellido = "Sánchez", TipoNumero = TiposNumero.OTRO, CodigoPais = 52, CodigoArea = 55, NumeroTel = 9876542 },
+        new Persona { Documento = 9012456, Nombre = "Gabriela", Apellido = "Méndez", TipoNumero = TiposNumero.TRABAJO, CodigoPais = 57, CodigoArea = 1, NumeroTel = 765432 },
+        new Persona { Documento = 1123344, Nombre = "Martín", Apellido = "Suárez", TipoNumero = TiposNumero.TRABAJO, CodigoPais = 1, CodigoArea = 305, NumeroTel = 321098 },
+        new Persona { Documento = 2234455, Nombre = "Verónica", Apellido = "Castro", TipoNumero = TiposNumero.OTRO, CodigoPais = 55, CodigoArea = 11, NumeroTel = 654321 },
+        new Persona { Documento = 3445566, Nombre = "Nicolás", Apellido = "Ibáñez", TipoNumero = TiposNumero.CASA, CodigoPais = 34, CodigoArea = 93, NumeroTel = 23456789 },
+        new Persona { Documento = 4556677, Nombre = "Paula", Apellido = "Delgado", TipoNumero = TiposNumero.CASA, CodigoPais = 49, CodigoArea = 69, NumeroTel = 87654 },
+        new Persona { Documento = 5667788, Nombre = "Diego", Apellido = "Vázquez", TipoNumero = TiposNumero.OTRO, CodigoPais = 54, CodigoArea = 351, NumeroTel = 554321 }
+    */
 
         internal string IngresarDatos(Persona persona)
         {

@@ -57,6 +57,9 @@
             botonAceptar = new Button();
             botonFinalizar = new Button();
             grupoAñadirElemento = new GroupBox();
+            comboBoxDocumento = new ComboBox();
+            label8 = new Label();
+            buttonBuscar = new Button();
             grupoColumnasPersonas.SuspendLayout();
             grupoAñadirElemento.SuspendLayout();
             SuspendLayout();
@@ -111,7 +114,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 99);
+            label4.Location = new Point(12, 100);
             label4.Name = "label4";
             label4.Size = new Size(120, 20);
             label4.TabIndex = 5;
@@ -198,7 +201,9 @@
             // listViewPersona
             // 
             listViewPersona.Columns.AddRange(new ColumnHeader[] { dniColumn, nombreColumn, apellidoColumn, tipoColumn, codigoPaisColumn, codigoAreaColumn, numeroTelColumn });
+            listViewPersona.FullRowSelect = true;
             listViewPersona.Location = new Point(12, 12);
+            listViewPersona.MultiSelect = false;
             listViewPersona.Name = "listViewPersona";
             listViewPersona.Size = new Size(749, 187);
             listViewPersona.TabIndex = 16;
@@ -307,11 +312,41 @@
             grupoAñadirElemento.TabIndex = 21;
             grupoAñadirElemento.TabStop = false;
             // 
+            // comboBoxDocumento
+            // 
+            comboBoxDocumento.FormattingEnabled = true;
+            comboBoxDocumento.Location = new Point(12, 515);
+            comboBoxDocumento.Name = "comboBoxDocumento";
+            comboBoxDocumento.Size = new Size(151, 28);
+            comboBoxDocumento.TabIndex = 22;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(12, 492);
+            label8.Name = "label8";
+            label8.Size = new Size(87, 20);
+            label8.TabIndex = 21;
+            label8.Text = "Documento";
+            // 
+            // buttonBuscar
+            // 
+            buttonBuscar.Location = new Point(215, 514);
+            buttonBuscar.Name = "buttonBuscar";
+            buttonBuscar.Size = new Size(94, 29);
+            buttonBuscar.TabIndex = 23;
+            buttonBuscar.Text = "Buscar";
+            buttonBuscar.UseVisualStyleBackColor = true;
+            buttonBuscar.Click += buttonBuscar_Click;
+            // 
             // DatosDeUnaPersonaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(770, 470);
+            ClientSize = new Size(770, 571);
+            Controls.Add(buttonBuscar);
+            Controls.Add(label8);
+            Controls.Add(comboBoxDocumento);
             Controls.Add(grupoAñadirElemento);
             Controls.Add(grupoColumnasPersonas);
             Name = "DatosDeUnaPersonaForm";
@@ -321,6 +356,7 @@
             grupoAñadirElemento.ResumeLayout(false);
             grupoAñadirElemento.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -354,5 +390,8 @@
         private Button botonAceptar;
         private Button botonFinalizar;
         private GroupBox grupoAñadirElemento;
+        private ComboBox comboBoxDocumento;
+        private Label label8;
+        private Button buttonBuscar;
     }
 }

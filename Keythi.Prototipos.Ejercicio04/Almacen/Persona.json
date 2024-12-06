@@ -1,0 +1,137 @@
+[
+  {
+    "Documento": 1234562,
+    "Nombre": "Juan",
+    "Apellido": "P�rez",
+    "TipoNumero": "CASA",
+    "CodigoPais": 54,
+    "CodigoArea": 11,
+    "NumeroTel": 5555123
+  },
+  {
+    "Documento": 8765432,
+    "Nombre": "Mar�a",
+    "Apellido": "Garc�a",
+    "TipoNumero": "TRABAJO",
+    "CodigoPais": 1,
+    "CodigoArea": 212,
+    "NumeroTel": 134567
+  },
+  {
+    "Documento": 2345672,
+    "Nombre": "Pedro",
+    "Apellido": "L�pez",
+    "TipoNumero": "OTRO",
+    "CodigoPais": 34,
+    "CodigoArea": 91,
+    "NumeroTel": 98764321
+  },
+  {
+    "Documento": 3456782,
+    "Nombre": "Ana",
+    "Apellido": "Torres",
+    "TipoNumero": "CASA",
+    "CodigoPais": 44,
+    "CodigoArea": 20,
+    "NumeroTel": 765421
+  },
+  {
+    "Documento": 4567890,
+    "Nombre": "Carlos",
+    "Apellido": "Fern�ndez",
+    "TipoNumero": "CASA",
+    "CodigoPais": 49,
+    "CodigoArea": 30,
+    "NumeroTel": 310987
+  },
+  {
+    "Documento": 5678901,
+    "Nombre": "Laura",
+    "Apellido": "Ram�rez",
+    "TipoNumero": "CASA",
+    "CodigoPais": 33,
+    "CodigoArea": 1,
+    "NumeroTel": 9988766
+  },
+  {
+    "Documento": 6789012,
+    "Nombre": "Jos�",
+    "Apellido": "Mart�nez",
+    "TipoNumero": "CASA",
+    "CodigoPais": 61,
+    "CodigoArea": 3,
+    "NumeroTel": 123214
+  },
+  {
+    "Documento": 7890124,
+    "Nombre": "Sof�a",
+    "Apellido": "Gonz�lez",
+    "TipoNumero": "TRABAJO",
+    "CodigoPais": 54,
+    "CodigoArea": 223,
+    "NumeroTel": 444678
+  },
+  {
+    "Documento": 8901245,
+    "Nombre": "Luis",
+    "Apellido": "S�nchez",
+    "TipoNumero": "OTRO",
+    "CodigoPais": 52,
+    "CodigoArea": 55,
+    "NumeroTel": 9876542
+  },
+  {
+    "Documento": 9012456,
+    "Nombre": "Gabriela",
+    "Apellido": "M�ndez",
+    "TipoNumero": "TRABAJO",
+    "CodigoPais": 57,
+    "CodigoArea": 1,
+    "NumeroTel": 765432
+  },
+  {
+    "Documento": 1123344,
+    "Nombre": "Mart�n",
+    "Apellido": "Su�rez",
+    "TipoNumero": "TRABAJO",
+    "CodigoPais": 1,
+    "CodigoArea": 305,
+    "NumeroTel": 321098
+  },
+  {
+    "Documento": 2234455,
+    "Nombre": "Ver�nica",
+    "Apellido": "Castro",
+    "TipoNumero": "OTRO",
+    "CodigoPais": 55,
+    "CodigoArea": 11,
+    "NumeroTel": 654321
+  },
+  {
+    "Documento": 3445566,
+    "Nombre": "Nicol�s",
+    "Apellido": "Ib��ez",
+    "TipoNumero": "CASA",
+    "CodigoPais": 34,
+    "CodigoArea": 93,
+    "NumeroTel": 23456789
+  },
+  {
+    "Documento": 4556677,
+    "Nombre": "Paula",
+    "Apellido": "Delgado",
+    "TipoNumero": "CASA",
+    "CodigoPais": 49,
+    "CodigoArea": 69,
+    "NumeroTel": 87654
+  },
+  {
+    "Documento": 5667788,
+    "Nombre": "Diego",
+    "Apellido": "V�zquez",
+    "TipoNumero": "OTRO",
+    "CodigoPais": 54,
+    "CodigoArea": 351,
+    "NumeroTel": 554321
+  }
+]

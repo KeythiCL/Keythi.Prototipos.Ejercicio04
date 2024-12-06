@@ -48,7 +48,21 @@ namespace Keythi.Prototipos.Ejercicio04.DatosDeUnaPersona
 
         private void DatosDeUnaPersonaForm_Load(object sender, EventArgs e)
         {
+            // Limpiar el ComboBox antes de cargar los documentos
+            comboBoxDocumento.Items.Clear();
 
+            // Asumimos que tienes una lista de personas en tu modelo
+            foreach (var persona in modelo.Personas)
+            {
+                // Agregar los documentos de cada persona al ComboBox
+                comboBoxDocumento.Items.Add(persona.Documento);
+            }
+
+            // Opcional: selecciona el primer ítem por defecto, si lo deseas
+            if (comboBoxDocumento.Items.Count > 0)
+            {
+                comboBoxDocumento.SelectedIndex = 0;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -224,5 +238,41 @@ namespace Keythi.Prototipos.Ejercicio04.DatosDeUnaPersona
             }
         }
 
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+                // Obtener el valor del documento ingresado en el ComboBox
+                if (comboBoxDocumento.SelectedItem != null && int.TryParse(comboBoxDocumento.SelectedItem.ToString(), out int documentoBuscado))
+                {
+                    // Filtrar la lista de personas por documento
+                    var personaBuscada = modelo.Personas.FirstOrDefault(p => p.Documento == documentoBuscado);
+
+                    if (personaBuscada != null)
+                    {
+                        // Limpiar el ListView antes de mostrar los resultados de la búsqueda
+                        listViewPersona.Items.Clear();
+
+                        // Crear un nuevo elemento para el ListView con la persona encontrada
+                        ListViewItem item = new ListViewItem(personaBuscada.Documento.ToString());
+                        item.SubItems.Add(personaBuscada.Nombre);
+                        item.SubItems.Add(personaBuscada.Apellido);
+                        item.SubItems.Add(personaBuscada.TipoNumero.ToString());
+                        item.SubItems.Add(personaBuscada.CodigoPais.ToString());
+                        item.SubItems.Add(personaBuscada.CodigoArea.ToString());
+                        item.SubItems.Add(personaBuscada.NumeroTel.ToString());
+
+                        // Agregar el elemento al ListView
+                        listViewPersona.Items.Add(item);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró ninguna persona con ese documento.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, ingrese un documento válido para buscar.");
+                }
+
+        }
     }
 }
